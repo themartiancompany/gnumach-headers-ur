@@ -89,7 +89,7 @@ pkgver=1.8.r82.g0294ec07
 # branch 'master' in hurd/gnumach.git
 _commit="0294ec07a1655b2883afae5877eb9111a7f3a343"
 _bundle_commit="8908b9977efc334bf74ffa79923dc8b05fef9748"
-pkgrel=8
+pkgrel=9
 pkgdesc="GNU Mach - header files"
 arch=(
   'arm'
@@ -257,11 +257,14 @@ build() {
     "${_configure_opts[@]}" || \
     true
   find \
-    "${srcdir}/" |
-    grep \
-      "config.status.dep.patch" \
-      -exec \
-        cat '{}' \; || \
+    "${srcdir}" \
+    -type \
+      "f" \
+    -iname
+      "config.status.dep.patch" | \
+    -exec \
+      cat \
+        '{}' \; || \
     true
 }
 
