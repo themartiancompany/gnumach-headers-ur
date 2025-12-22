@@ -213,7 +213,7 @@ validpgpkeys=(
 
 pkgver() {
   cd \
-    "${_name}"
+    "${_tarname}"
   git \
     describe \
     --long | \
@@ -228,7 +228,7 @@ prepare() {
   mkdir \
     "build"
   cd \
-    "${_name}"
+    "${_tarname}"
   autoreconf \
     -fi
 }
@@ -242,7 +242,7 @@ build() {
   )
   cd \
     "build"
-  "../${_name}/configure" \
+  "../${_tarname}/configure" \
     "${_configure_opts[@]}"
 }
 
