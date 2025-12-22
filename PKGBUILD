@@ -115,6 +115,7 @@ makedepends=(
   "automake"
   "${_c_compiler}"
   "make"
+  "patch"
 )
 if [[ "${_arch}" == "x86_64" ]]; then
   makedepends+=(
