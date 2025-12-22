@@ -90,7 +90,7 @@ pkgver=1.8.r82.g0294ec07
 # branch 'master' in hurd/gnumach.git
 _commit="0294ec07a1655b2883afae5877eb9111a7f3a343"
 _bundle_commit="8908b9977efc334bf74ffa79923dc8b05fef9748"
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU Mach - header files"
 arch=(
   'arm'
@@ -163,6 +163,8 @@ _evmfs_uri="${_evmfs_dir}/${_sum}"
 _evmfs_src="${_tarfile}::${_evmfs_uri}"
 _sig_uri="${_evmfs_dir}/${_sig_sum}"
 _sig_src="${_tarfile}.sig::${_sig_uri}"
+source=()
+sha256sums=()
 if [[ "${_evmfs}" == "true" ]]; then
   if [[ "${_git}" == "true" ]]; then
     _src="${_evmfs_src}"
@@ -207,13 +209,6 @@ validpgpkeys=(
   # Pellegrino Prevete (dvorak)
   #   <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
   '12D8E3D7888F741E89F86EE0FEC8567A644F1D16'
-)
-
-
-source=(
-)
-sha512sums=(
-  'SKIP'
 )
 
 pkgver() {
