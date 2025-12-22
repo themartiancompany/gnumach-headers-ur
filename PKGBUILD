@@ -90,7 +90,7 @@ pkgver=1.8.r82.g0294ec07
 # branch 'master' in hurd/gnumach.git
 _commit="0294ec07a1655b2883afae5877eb9111a7f3a343"
 _bundle_commit="8908b9977efc334bf74ffa79923dc8b05fef9748"
-pkgrel=5
+pkgrel=6
 pkgdesc="GNU Mach - header files"
 arch=(
   'arm'
@@ -236,8 +236,18 @@ prepare() {
 
 build() {
   local \
-    _configure_opts=()
+    _configure_opts=() \
+    _build_platform \
+    _host_platform
+  if [[ "${_os}" == "GNU/Linux" ]]; then
+    if [[ "${_arch}" == "x86_64" ]]; then
+      _build_platform="${_arch}-pc-linux-gnu"
+      _host_platform="i386-gnu"
+    fi
+  fi
   _configure_opts+=(
+    --build="${_build_platform}"
+    --host="${_host_platform}"
     --prefix="/usr"
     --libexecdir="/usr/lib"
   )
