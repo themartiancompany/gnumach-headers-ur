@@ -77,7 +77,6 @@ if [[ ! -v "_c_compiler" ]]; then
     _c_compiler_lib="llvm-libs"
   fi
 fi
-_libc="glibc"
 _proj=gnu
 _name=mach
 _pkg=${_proj}${_name}
@@ -255,7 +254,15 @@ build() {
   cd \
     "build"
   "../${_tarname}/configure" \
-    "${_configure_opts[@]}"
+    "${_configure_opts[@]}" || \
+    true
+  find \
+    "${srcdir}/" |
+    grep \
+      "config.status.dep.patch" \
+      -exec \
+        cat '{}' \; || \
+    true
 }
 
 package() {
