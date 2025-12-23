@@ -262,7 +262,8 @@ build() {
   cd \
     "build"
   cp \
-    "../Makefile.in" \
+    "../Makefile.in.dep.patch" \
+    "../Makefile.in.dep.2.patch" \
     "."
   "../${_tarname}/configure" \
     "${_configure_opts[@]}" || \
