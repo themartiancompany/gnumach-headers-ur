@@ -164,8 +164,16 @@ _evmfs_uri="${_evmfs_dir}/${_sum}"
 _evmfs_src="${_tarfile}::${_evmfs_uri}"
 _sig_uri="${_evmfs_dir}/${_sig_sum}"
 _sig_src="${_tarfile}.sig::${_sig_uri}"
-source=()
-sha256sums=()
+source=(
+  # "Makefile.in"
+  "Makefile.in.dep.patch"
+  "Makefile.in.dep.2.patch"
+)
+sha256sums=(
+  # "997724ec3ce3570ee397ee5f9eac9300f2f91727535cdf4444893d2239a03cc2"
+  "182fbdccae3a6c0d918635c3ce65abaef4251ef36a5d77d71ece4630e37c0ee6"
+  "5e2da19d7ff287ba2754fc47f1158ffa03f253a65608a3a56d1e95a109a13e14"
+)
 if [[ "${_evmfs}" == "true" ]]; then
   if [[ "${_git}" == "true" ]]; then
     _src="${_evmfs_src}"
@@ -253,12 +261,20 @@ build() {
   )
   cd \
     "build"
+  cp \
+    "../Makefile.in" \
+    "."
   "../${_tarname}/configure" \
     "${_configure_opts[@]}" || \
     true
   echo "The Makefile"
-  cat \
-    "${srcdir}/Makefile.in"
+  # cat \
+  #   "${srcdir}/${_tarname}/Makefile.in" || \
+  #   true
+  # echo "The config.status file"
+  # cat \
+  #   "${srcdir}/${_tarname}/config.status" || \
+  #   true
   # find \
   #   "${srcdir}" \
   #   -type \
