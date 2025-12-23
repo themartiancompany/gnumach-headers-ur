@@ -89,7 +89,7 @@ pkgver=1.8.r82.g0294ec07
 # branch 'master' in hurd/gnumach.git
 _commit="0294ec07a1655b2883afae5877eb9111a7f3a343"
 _bundle_commit="8908b9977efc334bf74ffa79923dc8b05fef9748"
-pkgrel=15
+pkgrel=16
 pkgdesc="GNU Mach - header files"
 arch=(
   'arm'
@@ -264,7 +264,7 @@ build() {
   cp \
     "../Makefile.in.dep.patch" \
     "../Makefile.in.dep.2.patch" \
-    "${_tarname}"
+    "../${_tarname}"
   "../${_tarname}/configure" \
     "${_configure_opts[@]}" || \
     true
