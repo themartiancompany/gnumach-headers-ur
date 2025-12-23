@@ -115,6 +115,7 @@ makedepends=(
   "${_c_compiler}"
   "make"
   "patch"
+  "texinfo"
 )
 if [[ "${_arch}" == "x86_64" ]]; then
   makedepends+=(
